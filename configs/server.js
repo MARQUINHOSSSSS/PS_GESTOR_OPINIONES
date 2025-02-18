@@ -5,10 +5,10 @@ import helmet from 'helmet'
 import morgan from 'morgan'
 import { dbConexion } from "./mongo.js"
 import userRoutes from '../src/users/user.routes.js';
-//import authRoutes from '../src/auth/auth.routes.js';
-//import publicationRoutes from '../src/posts/posts.routes.js';
+import authRoutes from '../src/auth/auth.routes.js';
+import publicationRoutes from '../src/posts/posts.routes.js';
 //import commentRoutes from '../src/comments/comments.routes.js'
-//import apiLimiter from "../src/middlewares/rate-limit-validator.js"
+import apiLimiter from "../src/middlewares/validar-cantidad-peticiones.js"
 
 const middlewares = (app) =>{
     app.use(express.json())
@@ -19,10 +19,10 @@ const middlewares = (app) =>{
 }
 
 const routes = (app) =>{
-    //app.use("/opinionmanager/v1/auth", authRoutes)
+    app.use("/opinionmanager/v1/auth", authRoutes)
     app.use("/opinionmanager/v1/user", userRoutes)
-    // app.use("/opinionmanager/v1/products" , publicationRoutesRoutes)
-    //app.use("/opinionmanager/v1/category", commentRoutesRoutes)
+    app.use("/opinionmanager/v1/posts" , publicationRoutes)
+    // app.use("/opinionmanager/v1/comments", commentRoutesRoutes)
 }
 
 const conectarDB = async () =>{
