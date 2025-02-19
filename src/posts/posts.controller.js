@@ -1,5 +1,5 @@
 import Posts from './posts.model.js';
-//import Comment from '../comments/comments.model.js';
+import Comment from '../comments/comments.model.js';
 import User from '../users/user.model.js';
 
 
